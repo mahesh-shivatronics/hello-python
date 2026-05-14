@@ -1,27 +1,30 @@
 import streamlit as st
 
-st.title("Calculator")
+st.title("GUI Calculator")
 
-a = st.number_input("First Number")
-b = st.number_input("Second Number")
+a = st.number_input("Enter First Number")
+b = st.number_input("Enter Second Number")
 
 operation = st.selectbox(
-    "Choose Operation",
-    ["Add", "Subtract", "Multiply", "Divide"]
+    "Select Operation",
+    ["Addition", "Subtraction", "Multiplication", "Division"]
 )
 
 if st.button("Calculate"):
 
-    if operation == "Add":
+    if operation == "Addition":
         result = a + b
 
-    elif operation == "Subtract":
+    elif operation == "Subtraction":
         result = a - b
 
-    elif operation == "Multiply":
+    elif operation == "Multiplication":
         result = a * b
 
-    elif operation == "Divide":
-        result = a / b if b != 0 else "Cannot divide by zero"
+    elif operation == "Division":
+        if b != 0:
+            result = a / b
+        else:
+            result = "Cannot divide by zero"
 
-    st.write("Result:", result)
+    st.success(f"Result: {result}")
